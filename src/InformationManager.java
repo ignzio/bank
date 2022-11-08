@@ -4,14 +4,14 @@ import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+
 //this class will manage all the methods to create account, will store all the information and is responsable of manipulating the data. and display.
 public class InformationManager {
-    ArrayList<Accounts> accounts = new ArrayList<Accounts>();
+    public ArrayList<Accounts> accounts = new ArrayList<Accounts>();
     int numbersOfAccounts = 0;
+  
+    
 
-    InformationManager(){
-
-    }
     void createAccount(String holder,String password,String address){
         LocalDateTime time = LocalDateTime.now();
         DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
@@ -41,5 +41,26 @@ public class InformationManager {
     void showAccountDetails(){
 
     }
+    void showAllAccountDetails(){
+        if(!accounts.isEmpty()){
+        System.out.println("__________________________________________________ \n SHOWING ALL ACCOUNTS");
+        for(Accounts account : accounts){
+            System.out.println("===============================================" + "\n" +
+        
+        "Account Number: " + account.getAccountNumber() + "\n" +
+        "Account Name: " + account.getHolderName() + "\n" +
+        "Address: " + account.getHolderAddress() + "\n" +
+        "Opening Date: " + account.getOpeningDate() + "\n" +
+        "Starting Balance: " + account.getHolderBalance());    
+        }
+        System.out.println("\n __________________________________________________");}
+        else {
+            System.out.println("__________________________________________________ \n SHOWING ALL ACCOUNTS");
+            System.out.println("no existing accounts");
+            System.out.println("\n __________________________________________________");
+        }
+    }
     //implement binary search
+
+  
 }

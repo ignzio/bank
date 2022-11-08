@@ -22,13 +22,13 @@ public class Window extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(new BorderLayout());
         this.setSize(new Dimension(1270,720));
+        this.setResizable(false);
 
 
         homePanelSettings();
         createAccountPanelSettings();
         lateralPanelSettings();
         centerPanelSettings();
-        accountsPanelSettings();
         homeButton.addActionListener(e -> switchCenterPanel(homePanel));
         createAccountButton.addActionListener(e -> switchCenterPanel(createAccountPanel));
         accountsButton.addActionListener(e -> switchCenterPanel(accountsPanel));
@@ -63,10 +63,8 @@ public class Window extends JFrame {
         createAccountPanel.setBackground(new Color(0,20,0));
         createAccountPanel.setVisible(false);
     }
-    void accountsPanelSettings(){
-        accountsPanel.setBackground(new Color(20,0,0));
-        createAccountPanel.setVisible(false);
-    }
+    
+   
 
     void switchCenterPanel(JPanel panel){
         homePanel.setVisible(false);
