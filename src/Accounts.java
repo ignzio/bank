@@ -5,10 +5,9 @@ public class Accounts {
     public String holderAddress;
     public String openingDate;
     public float holderBalance;
-    Accounts(int account,String holder,String password,String address,String date,float balance){
+    Accounts(int account,String holder,String address,String date,float balance){
         accountNumber = account;
         holderName = holder;
-        holderPassword = password;
         holderAddress = address;
         openingDate = date;
         holderBalance = balance;

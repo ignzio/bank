@@ -1,26 +1,33 @@
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 //this class will manage all the methods to create account, will store all the information and is responsable of manipulating the data. and display.
 public class InformationManager {
-    public ArrayList<Accounts> accounts = new ArrayList<Accounts>();
+    public List< Accounts > accounts2 = new ArrayList<Accounts>();
+
+    public AmazingArrayList<Accounts> accounts = new AmazingArrayList<Accounts>();
+
+
+
     int numbersOfAccounts = 0;
   
     
 
-    void createAccount(String holder,String password,String address){
+    void createAccount(String holder,String address){
         LocalDateTime time = LocalDateTime.now();
         DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
         String formattedDate = time.format(myFormatObj);
 
         //first checks if the account numbers are sorted numerically, if theres any gap betweeen accounts, add it#
 
-        Accounts account = new Accounts(numbersOfAccounts, holder, password, address, formattedDate, 0);
+        Accounts account = new Accounts(numbersOfAccounts, holder, address, formattedDate, 0);
         accounts.add(account);
+       // account2.add(account);
         numbersOfAccounts += 1;
         //System.out.println(accounts +  accounts.get(0).getHolderName());
 
@@ -44,6 +51,7 @@ public class InformationManager {
     void showAllAccountDetails(){
         if(!accounts.isEmpty()){
         System.out.println("__________________________________________________ \n SHOWING ALL ACCOUNTS");
+        
         for(Accounts account : accounts){
             System.out.println("===============================================" + "\n" +
         
@@ -61,6 +69,21 @@ public class InformationManager {
         }
     }
     //implement binary search
+    void deleteAccount(int accountNumber){
+    
 
-  
+    }
+    public boolean isNumeric(String strNum) {
+        if (strNum == null) {
+            return false;
+        }
+        try {
+            int i = Integer.parseInt(strNum);
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
+        return true;
+    }
+
+   
 }

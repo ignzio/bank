@@ -12,20 +12,41 @@ import java.awt.event.ActionEvent;
 import java.awt.Color;
 
 
+
 public class AccountsPanel extends JPanel{
     JTextField searchBar = new JTextField();
     JPanel mainView = new JPanel();
     JPanel listBoxPanel = new JPanel();
     JButton showListAccountButton = new JButton("Show Accounts");
     JButton showTransactionsListButton = new JButton("Show Transactions");
+    JButton actionButton = new JButton("X");
     JScrollPane listBoxScrollPane = new JScrollPane(listBoxPanel,JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
     String[] actions = { "search", "delete", "update"};
     JComboBox actionsComboBox = new JComboBox<>(actions);
+
+
+
     AbstractAction comboBoxActions = new AbstractAction() {
         @Override
         public void actionPerformed(ActionEvent e) {
             // TODO Auto-generated method stub
-            System.out.println(actionsComboBox.getSelectedItem());
+            boolean searchBarIsDigit = Bank.manager.isNumeric(searchBar.getText());
+
+            if(actionsComboBox.getSelectedItem() == actionsComboBox.getItemAt(0)){
+                System.out.println(actionsComboBox.getSelectedItem());
+                //search
+            }
+            if(actionsComboBox.getSelectedItem() == actionsComboBox.getItemAt(1) && searchBarIsDigit){
+                System.out.println(actionsComboBox.getSelectedItem());
+
+
+                Bank.manager.deleteAccount(Integer.parseInt(searchBar.getText()));
+                //delete
+            }
+            if(actionsComboBox.getSelectedItem() == actionsComboBox.getItemAt(2)){
+                System.out.println(actionsComboBox.getSelectedItem());
+                //update
+            }
         }
         
     };
@@ -38,11 +59,12 @@ public class AccountsPanel extends JPanel{
 
         
 
-        searchBar.setBounds(30,24,400,40);
+        searchBar.setBounds(30,24,290,40);
 
         actionsComboBox.setBounds(450,20,200,50);
-        actionsComboBox.addActionListener(comboBoxActions);
   
+        actionButton.setBounds(350,20,50,50);
+        actionButton.addActionListener(comboBoxActions);
 
         mainView.setBounds(30,80,1000,580);
         mainView.setLayout(null);
@@ -52,6 +74,7 @@ public class AccountsPanel extends JPanel{
    
         this.add(searchBar);
         this.add(actionsComboBox);
+        this.add(actionButton,2);
         this.add(mainView);
         this.add(showListAccountButton);
         
