@@ -92,6 +92,8 @@ public class AccountsPanel extends JPanel{
     }
     void showAccountsList(){
         listBoxPanel.removeAll();
+        listBoxPanel.revalidate();
+        listBoxPanel.repaint();
         for(Accounts a : Bank.manager.accounts){  
             JLabel label = new JLabel("Account Number: " + a.accountNumber  + " Account Holder"  + a.holderName);
             label.setForeground(new Color(0,80,10));
@@ -99,7 +101,7 @@ public class AccountsPanel extends JPanel{
             listBoxPanel.add(label);
             System.out.println();
         }
-        listBoxScrollPane.validate();
+    
         Bank.manager.showAllAccountDetails();
     }
     

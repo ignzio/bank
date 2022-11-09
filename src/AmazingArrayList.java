@@ -37,6 +37,36 @@ public class AmazingArrayList<E> implements Iterable<E> {
         return true;
     }
 
+    public void remove(E element) {
+        if (element == null) {
+            for (int i = 0; i < this.size; i++) {
+                if (this.elements[i] == null) {
+                    fastRemove(i);
+                    return;
+                }
+            }
+        } else {
+            for (int i = 0; i < this.size; i++) {
+                if (element.equals(this.elements[i])) {
+                    fastRemove(i);
+                    return;
+                }
+            }
+        }
+    }
+    private void fastRemove(int index) {
+        int movedNumber = this.size - index - 1;
+        if (movedNumber > 0) {
+            System.arraycopy(this.elements, index + 1, this.elements, index, movedNumber);
+        }
+        this.elements[--this.size] = null;
+    }
+
+    public E get(int index) {
+        E e = this.elements[index];
+        return e;
+    }
+
     public boolean isEmpty() {
         return size() == 0;
     }

@@ -70,7 +70,7 @@ public class InformationManager {
     }
     //implement binary search
     void deleteAccount(int accountNumber){
-    
+        accounts.remove(accounts.get(accountNumber));
 
     }
     public boolean isNumeric(String strNum) {
@@ -84,6 +84,8 @@ public class InformationManager {
         }
         return true;
     }
+
+    
 
    
 }
