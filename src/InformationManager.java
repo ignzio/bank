@@ -45,8 +45,26 @@ public class InformationManager {
           JOptionPane.INFORMATION_MESSAGE);
         System.out.println("===============================================" + "\n" +message + "\n" + "===============================================");
     }
-    void showAccountDetails(){
-
+    Accounts showAccountDetails(int accountNumber){
+        String message;
+       
+        for(Accounts account : accounts){
+            if(account.getAccountNumber() == accountNumber){
+                message = "===============================================" + "\n" +
+                "Account Number: " + account.getAccountNumber() + "\n" +
+                "Account Name: " + account.getHolderName() + "\n" +
+                "Address: " + account.getHolderAddress() + "\n" +
+                "Opening Date: " + account.getOpeningDate() + "\n" +
+                "Starting Balance: " + account.getHolderBalance(); 
+                System.out.println(message);
+                return account;
+            }
+            
+        }
+        return null;
+        
+        
+      
     }
     void showAllAccountDetails(){
         if(!accounts.isEmpty()){

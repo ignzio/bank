@@ -1,10 +1,11 @@
 public class Accounts {
-    public int accountNumber;
-    public String holderName;
-    public String holderPassword;
-    public String holderAddress;
-    public String openingDate;
-    public float holderBalance;
+    private int accountNumber;
+    private String holderName;
+    private String holderAddress;
+    private String openingDate;
+    private float holderBalance;
+    
+    
     Accounts(int account,String holder,String address,String date,float balance){
         accountNumber = account;
         holderName = holder;

@@ -70,6 +70,11 @@ public class AmazingArrayList<E> implements Iterable<E> {
     public boolean isEmpty() {
         return size() == 0;
     }
+    public boolean isFull(){
+        return size == elements.length -1;
+    }
+    
+    
 
     @Override
     public Iterator<E> iterator() {

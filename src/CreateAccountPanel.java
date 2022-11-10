@@ -1,9 +1,14 @@
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+
+
+
+
 import java.util.HashSet;
 import java.awt.GridLayout;
 
@@ -20,7 +25,7 @@ public class CreateAccountPanel extends JPanel{
 
     
 
-    CreateAccountPanel(){
+    public CreateAccountPanel(){
         this.setBackground(new Color(0,20,0));
         this.setVisible(false);
         this.setLayout(null);
