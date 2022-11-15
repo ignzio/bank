@@ -26,9 +26,9 @@ public class AccountsPanel extends JPanel{
     JPanel informationPanel = new JPanel();
     JButton showListAccountButton = new JButton("Show Accounts");
     JButton showTransactionsListButton = new JButton("Show Transactions");
-    JButton actionButton = new JButton("X");
+    JButton actionButton = new JButton("Perform Action");
     JScrollPane listBoxScrollPane = new JScrollPane(listBoxPanel,JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-    String[] actions = { "search Account", "delete Account", "update"};
+    String[] actions = { "search Account", "delete Account","display Transactions"};
     JComboBox actionComboBox = new JComboBox<>(actions);
 
     Border border = BorderFactory.createLineBorder(Color.orange,3);
@@ -43,11 +43,14 @@ public class AccountsPanel extends JPanel{
            
 
             if(actionComboBox.getSelectedItem() == actionComboBox.getItemAt(0) && searchBarIsDigit){
+                 //search account
                 System.out.println(actionComboBox.getSelectedItem());
 
-                Accounts a = Bank.manager.showAccountDetails(Integer.parseInt(searchBar.getText()));
-                //search
+                Accounts a = Bank.manager.getAccountFromArray(Integer.parseInt(searchBar.getText()));
+                
+               
                 if(a != null){
+                    Bank.manager.showAccountDetails(a);
                     showAccountDetails(a);
                 }else{
                     System.out.println("No Account Found");
@@ -59,11 +62,11 @@ public class AccountsPanel extends JPanel{
 
 
                 Bank.manager.deleteAccount(Integer.parseInt(searchBar.getText()));
-                //delete
+                //delete Account
             }
             if(actionComboBox.getSelectedItem() == actionComboBox.getItemAt(2)){
                 System.out.println(actionComboBox.getSelectedItem());
-                //update
+                //display Transactions
             }
         }
         
@@ -153,7 +156,7 @@ public class AccountsPanel extends JPanel{
 
     private void showListAccountButtonSettings() {
         showListAccountButton.addActionListener(e -> showAccountsList());
-        showListAccountButton.setBounds(900,20,150,50);
+        showListAccountButton.setBounds(750,20,150,50);
     }
 
 
@@ -168,7 +171,7 @@ public class AccountsPanel extends JPanel{
     }
 
     private void actionsComboBoxSettings(){
-        actionComboBox.setBounds(450,20,200,50); 
+        actionComboBox.setBounds(520,20,200,50); 
     }
 
     private void mainViewSettings() {
@@ -177,7 +180,7 @@ public class AccountsPanel extends JPanel{
     }
 
     private void actionButtonSettings() {
-        actionButton.setBounds(350,20,50,50);
+        actionButton.setBounds(350,20,130,50);
         actionButton.addActionListener(comboBoxActions);
     }
        

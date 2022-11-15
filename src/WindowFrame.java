@@ -5,19 +5,18 @@ import javax.swing.JPanel;
 import java.awt.*;
 
 public class WindowFrame extends JFrame {
-    Dimension dimension;
-    JPanel lateralPanel = new JPanel();
-    JPanel centerPanel =new JPanel();
-    JPanel homePanel = new JPanel();
-    JPanel createAccountPanel= new CreateAccountPanel();
-    JPanel accountsPanel = new AccountsPanel();
-    JPanel transactionsPanel = new TransactionsPanel();
+    final JPanel lateralPanel = new JPanel();
+    final JPanel centerPanel =new JPanel();
+    final JPanel homePanel = new HomePanel();
+    final JPanel createAccountPanel= new CreateAccountPanel();
+    final JPanel accountsPanel = new AccountsPanel();
+    final JPanel transactionsPanel = new TransactionsPanel();
     
 
-    JButton homeButton = new JButton("Home");
-    JButton createAccountButton = new JButton("Create Account");
-    JButton accountsButton = new JButton("Accounts");
-    JButton transactionsButton = new JButton("Transactions");
+    final JButton homeButton = new JButton("Home");
+    final JButton createAccountButton = new JButton("Create Account");
+    final JButton accountsButton = new JButton("Accounts");
+    final JButton transactionsButton = new JButton("Transactions");
 
 
 
@@ -26,10 +25,6 @@ public class WindowFrame extends JFrame {
         this.setLayout(new BorderLayout());
         this.setSize(new Dimension(1270,720));
         this.setResizable(false);
-
-
-        homePanelSettings();
-        createAccountPanelSettings();
         lateralPanelSettings();
         centerPanelSettings();
         homeButton.addActionListener(e -> switchCenterPanel(homePanel));
@@ -39,8 +34,7 @@ public class WindowFrame extends JFrame {
         this.add(lateralPanel,BorderLayout.WEST);
         this.add(centerPanel,BorderLayout.CENTER);
     }
-
-
+    //settings for the lateral pannel positioned on the left of the frame
     private void lateralPanelSettings(){
         lateralPanel.setPreferredSize(new Dimension(200,100));
         lateralPanel.setBackground(new Color(0,0,0));
@@ -50,6 +44,7 @@ public class WindowFrame extends JFrame {
         lateralPanel.add(accountsButton);
         lateralPanel.add(transactionsButton);
     }
+    //settings for the center pannel positioned on the center of the frame
     private void centerPanelSettings(){
         centerPanel.setPreferredSize(new Dimension(500,500));
         centerPanel.setBackground(new Color(50,50,50));
@@ -60,20 +55,8 @@ public class WindowFrame extends JFrame {
         centerPanel.add(transactionsPanel);
     }
 
-    private void homePanelSettings(){
-        homePanel.setBackground(new Color(0,50,0));
-        homePanel.setVisible(true);
-    }
-    private void createAccountPanelSettings(){
-        createAccountPanel.setBackground(new Color(0,20,0));
-        createAccountPanel.setVisible(false);
-    }
-
-    
-    
-   
-
-    void switchCenterPanel(JPanel panel){
+    // This function switches the visibility of the pannels when pressing the buttons on the lateral panel
+    private void switchCenterPanel(JPanel panel){
         homePanel.setVisible(false);
         createAccountPanel.setVisible(false);
         accountsPanel.setVisible(false);

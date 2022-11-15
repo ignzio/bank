@@ -20,7 +20,6 @@ public class AmazingArrayList<E> implements Iterable<E> {
         return this.size;
     }
 
-
     private void ensureCapacity(int needCapacity) {
         if (needCapacity > elements.length) {
             Object[] oldElements = this.elements;
@@ -54,7 +53,7 @@ public class AmazingArrayList<E> implements Iterable<E> {
             }
         }
     }
-    private void fastRemove(int index) {
+    public void fastRemove(int index) {
         int movedNumber = this.size - index - 1;
         if (movedNumber > 0) {
             System.arraycopy(this.elements, index + 1, this.elements, index, movedNumber);
@@ -73,6 +72,8 @@ public class AmazingArrayList<E> implements Iterable<E> {
     public boolean isFull(){
         return size == elements.length -1;
     }
+
+   
     
     
 

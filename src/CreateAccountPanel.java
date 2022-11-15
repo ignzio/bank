@@ -23,6 +23,8 @@ public class CreateAccountPanel extends JPanel{
     JTextArea accountHolderAddressTextArea = new JTextArea();
     JButton submitButton = new JButton("Submit");
 
+    JLabel holderTextLabel = new JLabel();
+    JLabel addressTextLabel = new JLabel();
     
 
     public CreateAccountPanel(){
@@ -47,16 +49,17 @@ public class CreateAccountPanel extends JPanel{
         registerInfoPanel.setBounds(100, 50, 890, 600);
         registerInfoPanel.setLayout(new GridLayout(0,1));
 
-
-
         accountHolderTextArea.setPreferredSize(new Dimension(200,200));
         accountHolderAddressTextArea.setBounds(270,250,400,50);
 
-        registerInfoPanel.add(new JLabel("Holder Name"));
+        holderTextLabel.setText("AccountHolder");
+        registerInfoPanel.add(holderTextLabel);
         registerInfoPanel.add(accountHolderTextArea);
-        registerInfoPanel.add(new JLabel("Address"));
+
+        addressTextLabel.setText("Address");
+        registerInfoPanel.add(addressTextLabel);
         registerInfoPanel.add(accountHolderAddressTextArea);
-        registerInfoPanel.add(new JLabel());
+      
 
 
         submitButton.addActionListener(e -> submitInformations(
@@ -65,7 +68,7 @@ public class CreateAccountPanel extends JPanel{
 
         submitButton.setBounds(100,300,200,50);
         registerInfoPanel.add(submitButton);
-        registerInfoPanel.add(new JLabel());
+   
     }
 
     void submitInformations(String holder,String address){
@@ -74,7 +77,7 @@ public class CreateAccountPanel extends JPanel{
 
 
         if(holderTextFieldBlank && addressTextFieldBlank){
-            Bank.manager.createAccount(holder,address);
+            Bank.manager.createAccount(holder,address,true);
         }
         else {
             HashSet<String> messages = new HashSet<String>();
