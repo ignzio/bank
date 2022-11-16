@@ -5,17 +5,15 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
-
-
-
-
 import java.util.HashSet;
 import java.awt.GridLayout;
-
-
 import java.awt.Color;
 import java.awt.Dimension;
 
+
+/*
+ * this class is a Panel that allow to create an account. is shown by pressing the create account button in the main frame window
+ */
 public class CreateAccountPanel extends JPanel{
     JPanel mainView = new JPanel();
     JPanel registerInfoPanel = new JPanel();

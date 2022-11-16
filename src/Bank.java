@@ -1,5 +1,10 @@
 
 
+
+
+/*
+ * this Class is will run the main method and will hold an information manager variable to allow the interraction between all the GUI elements.
+ */
 public class Bank {
     public static InformationManager manager = new InformationManager();
 
@@ -7,16 +12,5 @@ public class Bank {
         WindowFrame frame = new WindowFrame();
         frame.setVisible(true);
     }
-
-    
-
-   //todo
-   //shuffle the transactions
-   //sort the transactions
-
-   //assign transaction in accounts
-   //iven an account number, display on the computer screen details of the account's last six
-   //transactions being sorted by transaction amounts
-
 
 }

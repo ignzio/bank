@@ -1,8 +1,14 @@
+
+
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import java.awt.Color;
 import java.awt.GridLayout;
 
+
+/*
+ * This Class will represent the Home panel, extra features will be added in this panel.
+ */
 public class HomePanel extends JPanel{
 
     JButton accountGenButton = new JButton("Generate 1000 accounts");

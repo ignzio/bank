@@ -1,8 +1,17 @@
+
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-
 import java.awt.*;
+
+/*
+ * this class is the main frame window 
+ * this class will allow to interract with buttons that will display different views of the program
+ * 
+ * 
+ */
+
 
 public class WindowFrame extends JFrame {
     final JPanel lateralPanel = new JPanel();
@@ -10,7 +19,7 @@ public class WindowFrame extends JFrame {
     final JPanel homePanel = new HomePanel();
     final JPanel createAccountPanel= new CreateAccountPanel();
     final JPanel accountsPanel = new AccountsPanel();
-    final JPanel transactionsPanel = new TransactionsPanel();
+    final JPanel transactionsPanel = new CreateTransactionsPanel();
     
 
     final JButton homeButton = new JButton("Home");
@@ -60,6 +69,7 @@ public class WindowFrame extends JFrame {
         homePanel.setVisible(false);
         createAccountPanel.setVisible(false);
         accountsPanel.setVisible(false);
+        transactionsPanel.setVisible(false);
         panel.setVisible(true);
     }
     

@@ -1,19 +1,35 @@
+
 import java.util.HashSet;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 
-public class TransactionsPanel extends CreateAccountPanel {
+
+
+/*
+ * This Class is a alternative version of CreateAccountPanel. this panel will allow to create and add a transactions
+ */
+
+public class CreateTransactionsPanel extends CreateAccountPanel {
     //accountHolder >> transaction type
     //accountHolderAddress >> trnasaction ammount
     JTextArea accountNumberTextArea= new JTextArea();
     JButton alternativeSubmitButton = new JButton();
+    String[] options = {"Withdraw", "Deposit"};
+    JComboBox<String> selectType = new JComboBox<>(options);
     
-    TransactionsPanel(){
+    CreateTransactionsPanel(){
+        this.setVisible(false);
+
         this.holderTextLabel.setText("transaction Type");
+        this.registerInfoPanel.remove(this.accountHolderTextArea);
+        this.registerInfoPanel.add(selectType,1);
+
+
         this.addressTextLabel.setText("transaction ammount");
 
         this.registerInfoPanel.remove(submitButton);
@@ -22,14 +38,13 @@ public class TransactionsPanel extends CreateAccountPanel {
         this.registerInfoPanel.add(alternativeSubmitButton);
 
         alternativeSubmitButton.setText("Submit");
-        alternativeSubmitButton.addActionListener(e -> submitInformations(accountHolderTextArea.getText(),
+        alternativeSubmitButton.addActionListener(e -> submitInformations(selectType.getSelectedItem().toString(),
         accountHolderAddressTextArea.getText(),
         accountNumberTextArea.getText()));
     }
     
     void submitInformations(String type, String ammount,String accountNumber) {
         // TODO Auto-generated method stub
-        boolean holderTextFieldBlank = !(accountHolderTextArea.getText().isBlank());
         boolean addressTextFieldBlank = !(accountHolderAddressTextArea.getText().isBlank());
         boolean accountNumberTexareaBlank = !(accountNumberTextArea.getText().isBlank());
 
@@ -39,7 +54,7 @@ public class TransactionsPanel extends CreateAccountPanel {
       
         
 
-        if(holderTextFieldBlank && addressTextFieldBlank && accountNumberTexareaBlank && accountNumberNumeric && ammountIsNumeric && ammountNegative){
+        if(addressTextFieldBlank && accountNumberTexareaBlank && accountNumberNumeric && ammountIsNumeric && ammountNegative){
             int accountNumberAsInteger = Integer.parseInt(accountNumber);
             float ammountAsFloat = Float.parseFloat(ammount);
 
@@ -52,9 +67,7 @@ public class TransactionsPanel extends CreateAccountPanel {
         {
             HashSet<String> messages = new HashSet<>();
             
-            if(!(holderTextFieldBlank)){
-                messages.add("The transaction type Text Field Is empty");
-            }
+    
             if (!(addressTextFieldBlank)){
                 messages.add("The transaction ammount text field is empty");
             }

@@ -1,6 +1,12 @@
-import java.util.Comparator;
 
-public class Transaction implements Comparator<Transaction>{
+/*
+ * Class Transaction
+ * this class will rapresent A transaction that holds the type of operation
+ * an ammount of money that has been trasfered in the account
+ * and the date in wich the trasaction has been made
+ * 
+ */
+public class Transaction{
     private String transactionType;
     private float transactionAmmount;
     private String transactionDate;
@@ -9,7 +15,7 @@ public class Transaction implements Comparator<Transaction>{
         transactionAmmount = ammount;
         transactionDate = date;
     }
-
+    //this method will display all the data of the transaction object
     public void displayData(){
         System.out.println("=================================");
         System.out.println("type: " + transactionType);
@@ -17,18 +23,17 @@ public class Transaction implements Comparator<Transaction>{
         System.out.println("date: " + transactionDate);
         System.out.println("=================================");
     }
+    //get method for transactionType
+    public String getType(){
+        return transactionType;
+    }
+    //get method for transactionAmmount
     public float getAmmount(){
         return transactionAmmount;
     }
-
-    @Override
-    public int compare(Transaction o1, Transaction o2) {
-        // TODO Auto-generated method stub
-        return 0;
+    //get method for transactionDate
+    public String getDate(){
+        return transactionDate;
     }
-
-   
-
-
     
 }

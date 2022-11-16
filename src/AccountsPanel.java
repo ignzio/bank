@@ -1,4 +1,5 @@
 
+
 import javax.swing.AbstractAction;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
@@ -10,50 +11,55 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
-
 import java.awt.Font;
 import java.awt.event.ActionEvent;
+import java.util.ArrayList;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.GridLayout;
 
 
-
+/*
+ * this class is a panel that allow to perform actions To:
+ * Search and display account informations
+ * Delete accounts
+ * Search and Display all the transactions of an Account
+ * Show all the existing account in a listbox
+ * 
+ */
 public class AccountsPanel extends JPanel{
-    JTextField searchBar = new JTextField();
-    JPanel mainView = new JPanel();
-    JPanel listBoxPanel = new JPanel();
+    JTextField searchBar = new JTextField(); 
+    JPanel mainView = new JPanel(); // main view of the panel
+    JPanel listBoxPanel = new JPanel(); // listbox where the accounts are shown
     JPanel informationPanel = new JPanel();
     JButton showListAccountButton = new JButton("Show Accounts");
     JButton showTransactionsListButton = new JButton("Show Transactions");
     JButton actionButton = new JButton("Perform Action");
     JScrollPane listBoxScrollPane = new JScrollPane(listBoxPanel,JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
     String[] actions = { "search Account", "delete Account","display Transactions"};
-    JComboBox actionComboBox = new JComboBox<>(actions);
-
+    JComboBox<String> actionComboBox = new JComboBox<>(actions);
     Border border = BorderFactory.createLineBorder(Color.orange,3);
-
-
 
     AbstractAction comboBoxActions = new AbstractAction() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            // TODO Auto-generated method stub
-            boolean searchBarIsDigit = Bank.manager.isNumeric(searchBar.getText());
-           
+
+          
+            boolean searchBarIsDigit = Bank.manager.isNumeric(searchBar.getText()); // t
+           if(!searchBarIsDigit){
+            Bank.manager.popUpGuiMessage("ERROR_NODIGIT");
+           }
 
             if(actionComboBox.getSelectedItem() == actionComboBox.getItemAt(0) && searchBarIsDigit){
                  //search account
                 System.out.println(actionComboBox.getSelectedItem());
 
                 Accounts a = Bank.manager.getAccountFromArray(Integer.parseInt(searchBar.getText()));
-                
-               
                 if(a != null){
                     Bank.manager.showAccountDetails(a);
                     showAccountDetails(a);
                 }else{
-                    System.out.println("No Account Found");
+                    Bank.manager.popUpGuiMessage("ERROR_NOFOUND");
+        
                 }
 
             }
@@ -64,12 +70,19 @@ public class AccountsPanel extends JPanel{
                 Bank.manager.deleteAccount(Integer.parseInt(searchBar.getText()));
                 //delete Account
             }
-            if(actionComboBox.getSelectedItem() == actionComboBox.getItemAt(2)){
+            if(actionComboBox.getSelectedItem() == actionComboBox.getItemAt(2) && searchBarIsDigit){
                 System.out.println(actionComboBox.getSelectedItem());
                 //display Transactions
+                Accounts a = Bank.manager.getAccountFromArray(Integer.parseInt(searchBar.getText()));
+                if(a != null){
+                    a.displayTransactions();
+                    showTransactions(a);
+                }
+                else{
+                    Bank.manager.popUpGuiMessage("ERROR_NOFOUND");
+                }
             }
         }
-        
     };
 
     public AccountsPanel(){
@@ -120,6 +133,18 @@ public class AccountsPanel extends JPanel{
 
     }
 
+    private void showTransactions(Accounts a){
+        informationPanel.setVisible(true);
+        informationPanel.removeAll();
+        informationPanel.revalidate();
+        informationPanel.repaint();
+        ArrayList<Transaction> tempTransactions = a.getTransaction();
+
+        for(Transaction t : tempTransactions){
+            JPanel transaction = new TransactionPanel(t.getType(), t.getAmmount(), t.getDate());
+            informationPanel.add(transaction);
+        }
+    }
 
     void showAccountsList(){
         listBoxPanel.removeAll();

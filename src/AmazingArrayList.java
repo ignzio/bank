@@ -1,6 +1,11 @@
+
 import java.util.Arrays;
 import java.util.Iterator;
 
+
+/*
+ * this class is a DataStructure that replicate the functionality of an ArrayList of the Collection framework.
+ */
 public class AmazingArrayList<E> implements Iterable<E> {
 
     private E[] elements;

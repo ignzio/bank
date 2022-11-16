@@ -1,3 +1,4 @@
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -36,7 +37,7 @@ public class Accounts {
     public float getHolderBalance(){
         return holderBalance;
     }
-    public ArrayList<Transaction> geTransactions(){
+    public ArrayList<Transaction> getTransaction(){
         return transactions;
 
     }
@@ -50,11 +51,18 @@ public class Accounts {
             transactions.add(t);
         }
     }
+    public void depositBalance(float ammount){
+        holderBalance += ammount;
+    }
+    public void withdrawBalance(float ammount){
+        holderBalance -= ammount;
+    }
 
     public void displayTransactions(){
         System.out.println("Transactions of: " + holderName + "\n Account Number: " + accountNumber);
         
-
+       
+        
         Collections.sort(transactions, new Comparator<Transaction>() {
             @Override
             public int compare(Transaction o1, Transaction o2) {
@@ -67,6 +75,9 @@ public class Accounts {
             t.displayData();
         }
         System.out.println("----------------------------------------------------");
+        if(transactions.isEmpty()){
+            Bank.manager.popUpGuiMessage("ERROR_NOTRANSACTION");
+        }
     }
 
 
