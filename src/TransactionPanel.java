@@ -16,10 +16,10 @@ import java.awt.GridLayout;
 
 
 public class TransactionPanel extends JPanel {
-    JLabel transactionType = new JLabel();
-    JLabel transactionAmmount = new JLabel();
-    JLabel transactionDate = new JLabel();
-    Border border = BorderFactory.createLineBorder(Color.orange,3);
+    final JLabel transactionType = new JLabel();
+    final JLabel transactionAmmount = new JLabel();
+    final JLabel transactionDate = new JLabel();
+    final Border border = BorderFactory.createLineBorder(Color.orange,3);
 
 
     TransactionPanel(String type, float ammount, String date){

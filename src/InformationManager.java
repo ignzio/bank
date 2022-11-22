@@ -10,8 +10,8 @@ import java.util.UUID;
 
 
 /*
- * this class will manage all the methods that perfom calculations,
- *  will store all the information and is responsable of manipulating the data. and display informations.
+ *  this class will manage all the methods that perform calculations,
+ *  will store  information and is responsable of manipulating the data. and display informations.
  */
 
 public class InformationManager {
@@ -21,7 +21,7 @@ public class InformationManager {
 
 
     /*
-     * this method will create an account and store it in the AmazingArrayList.
+     * this method will create an account and store it in the ArrayList.
      */
     public void createAccount(String holder, String address, boolean usePopup) {
         LocalDateTime time = LocalDateTime.now(); // take the local time
@@ -85,8 +85,8 @@ public class InformationManager {
 
     /*
      * this method will perform a binary Search to find an Account by Giving the account Number.
-     * using a try and catch statement to determine if the account has been found or not.
-     *  or if the input is generaly not valid
+        Use a try-and-catch statement to determine if the account has been found.
+        Or if the input is generally not valid
      */
     public Accounts getAccountFromArray(int accountNumber) {
         try {
@@ -97,6 +97,9 @@ public class InformationManager {
             return null;
         }
     }
+    /*
+     * this method will perform a binary Search to delete an Account by Giving the account Number.
+     */
     public void deleteAccount(int accountNumber) {
         Accounts a = getAccountFromArray(accountNumber);
         if(a == null){
@@ -286,5 +289,6 @@ public class InformationManager {
         }
         
     }
+  
     
 }

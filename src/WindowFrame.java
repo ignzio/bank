@@ -18,7 +18,7 @@ public class WindowFrame extends JFrame {
     final JPanel centerPanel =new JPanel();
     final JPanel homePanel = new HomePanel();
     final JPanel createAccountPanel= new CreateAccountPanel();
-    final JPanel accountsPanel = new AccountsPanel();
+    final AccountsPanel accountsPanel = new AccountsPanel();
     final JPanel transactionsPanel = new CreateTransactionsPanel();
     
 

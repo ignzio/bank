@@ -39,6 +39,13 @@ public class AccountsPanel extends JPanel{
     JComboBox<String> actionComboBox = new JComboBox<>(actions);
     Border border = BorderFactory.createLineBorder(Color.orange,3);
 
+
+    /*
+     * this abstract action is the actionListener for the jcombobox and actionbutton. it will 
+     * Search and display account informations
+ * Delete accounts
+ * Search and Display all the transactions of an Account
+     */
     AbstractAction comboBoxActions = new AbstractAction() {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -68,6 +75,7 @@ public class AccountsPanel extends JPanel{
 
 
                 Bank.manager.deleteAccount(Integer.parseInt(searchBar.getText()));
+            
                 //delete Account
             }
             if(actionComboBox.getSelectedItem() == actionComboBox.getItemAt(2) && searchBarIsDigit){
@@ -107,7 +115,7 @@ public class AccountsPanel extends JPanel{
         mainView.add(listBoxScrollPane);
     }
 
-
+    // Settings for the informationPanel is located on the right of the mainview
     private void informationPanelSettings() {
         informationPanel.setBounds(420,10,560,560);
        
@@ -116,6 +124,9 @@ public class AccountsPanel extends JPanel{
         informationPanel.setForeground(new Color(50,20,10));
         
     }
+    /*
+     * this method will show the account details in the information panel
+     */
     private void showAccountDetails(Accounts a){
         informationPanel.setVisible(true);
         informationPanel.removeAll();
@@ -133,6 +144,7 @@ public class AccountsPanel extends JPanel{
 
     }
 
+    //this method will show a trasaction of an account in the information panel
     private void showTransactions(Accounts a){
         informationPanel.setVisible(true);
         informationPanel.removeAll();
@@ -146,7 +158,8 @@ public class AccountsPanel extends JPanel{
         }
     }
 
-    void showAccountsList(){
+    //this method will show all the accounts of the accounts arraylist in the listbox
+    private void showAccountsList(){
         listBoxPanel.removeAll();
         listBoxPanel.revalidate();
         listBoxPanel.repaint();
@@ -164,13 +177,14 @@ public class AccountsPanel extends JPanel{
     }
 
 
-    //all settings below
+    //settings for the listboxScrollPanel
     private void listboxScrollPaneSettings() {
         listBoxScrollPane.setBackground(new Color(50,0,20));
         listBoxScrollPane.setBounds(5,10,400,560);
     }
 
 
+    //settings for the listboxPanel
     private void listBoxPanelSettings() {
         listBoxPanel.setLayout(new BoxLayout(listBoxPanel, BoxLayout.Y_AXIS));
         listBoxPanel.setBorder(LineBorder.createBlackLineBorder());
@@ -178,32 +192,36 @@ public class AccountsPanel extends JPanel{
         listBoxPanel.setBounds(5,10,400,560);
     }
 
-
+    //settings for the showListAccountButton
     private void showListAccountButtonSettings() {
         showListAccountButton.addActionListener(e -> showAccountsList());
         showListAccountButton.setBounds(750,20,150,50);
     }
 
-
+    //settings of the class
     private void settings(){
         this.setBackground(new Color(20,0,0));
         this.setVisible(false);
         this.setLayout(null);
     }
-        
+    
+    //settings for the searchbar
     private void searchBarSettings(){
         searchBar.setBounds(30,24,290,40);
     }
 
+    //settings for the actionscombobox
     private void actionsComboBoxSettings(){
         actionComboBox.setBounds(520,20,200,50); 
     }
 
+    //settings for the mainView
     private void mainViewSettings() {
         mainView.setBounds(30,80,1000,580);
         mainView.setLayout(null);
     }
 
+    //settings for the actionbutton
     private void actionButtonSettings() {
         actionButton.setBounds(350,20,130,50);
         actionButton.addActionListener(comboBoxActions);

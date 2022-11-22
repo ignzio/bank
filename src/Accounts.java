@@ -3,7 +3,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-
+/*
+ * this class is the rapresentation of An account.
+ */
 public class Accounts {
     private int accountNumber;
     private String holderName;
@@ -21,9 +23,7 @@ public class Accounts {
         holderBalance = balance;
     }
     public int getAccountNumber(){
-        return accountNumber;
-
-        
+        return accountNumber;        
     }
     public String getHolderName(){
         return holderName;
@@ -42,6 +42,9 @@ public class Accounts {
 
     }
 
+    /*
+     * this method will add a transaction into the arraylist and keep only 6 elements
+     */
     public void addTransaction(Transaction t){
         if(transactions.size() < 6){
             transactions.add(t);
@@ -51,13 +54,23 @@ public class Accounts {
             transactions.add(t);
         }
     }
+    /*
+     * this method will increase the balance of the account
+     */
     public void depositBalance(float ammount){
         holderBalance += ammount;
     }
+    /*
+     * this method will decrease the balance of the account
+     */
     public void withdrawBalance(float ammount){
         holderBalance -= ammount;
     }
 
+
+    /*
+     * this method will display all the transactions into the console. 
+     */
     public void displayTransactions(){
         System.out.println("Transactions of: " + holderName + "\n Account Number: " + accountNumber);
         

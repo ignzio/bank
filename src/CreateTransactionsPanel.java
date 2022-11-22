@@ -43,7 +43,10 @@ public class CreateTransactionsPanel extends CreateAccountPanel {
         accountNumberTextArea.getText()));
     }
     
-    void submitInformations(String type, String ammount,String accountNumber) {
+    /*
+     * this method will submit the information given in the text areas. and update accounts with the transaction
+     */
+    private void submitInformations(String type, String ammount,String accountNumber) {
         // TODO Auto-generated method stub
         boolean addressTextFieldBlank = !(accountHolderAddressTextArea.getText().isBlank());
         boolean accountNumberTexareaBlank = !(accountNumberTextArea.getText().isBlank());

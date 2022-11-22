@@ -15,14 +15,14 @@ import java.awt.Dimension;
  * this class is a Panel that allow to create an account. is shown by pressing the create account button in the main frame window
  */
 public class CreateAccountPanel extends JPanel{
-    JPanel mainView = new JPanel();
-    JPanel registerInfoPanel = new JPanel();
-    JTextArea accountHolderTextArea = new JTextArea();
-    JTextArea accountHolderAddressTextArea = new JTextArea();
-    JButton submitButton = new JButton("Submit");
+    final JPanel mainView = new JPanel();
+    final JPanel registerInfoPanel = new JPanel();
+    final JTextArea accountHolderTextArea = new JTextArea();
+    final JTextArea accountHolderAddressTextArea = new JTextArea();
+    final JButton submitButton = new JButton("Submit");
 
-    JLabel holderTextLabel = new JLabel();
-    JLabel addressTextLabel = new JLabel();
+    final JLabel holderTextLabel = new JLabel();
+    final JLabel addressTextLabel = new JLabel();
     
 
     public CreateAccountPanel(){
@@ -35,15 +35,16 @@ public class CreateAccountPanel extends JPanel{
 
         //this.add(registerInfoPanel); 
     }
-    void mainViewSettings(){
+    //settings for the mainView
+    private void mainViewSettings(){
         mainView.setBounds(100, 50, 890, 600);
         mainView.setLayout(new GridLayout(1,0));
         mainView.add(new JPanel());
         mainView.add(registerInfoPanel);
         mainView.add(new JPanel());
     }
-
-    void registerInfoPanelSetting(){
+    //settings for the registerInfo panel
+    private void registerInfoPanelSetting(){
         registerInfoPanel.setBounds(100, 50, 890, 600);
         registerInfoPanel.setLayout(new GridLayout(0,1));
 
@@ -68,8 +69,8 @@ public class CreateAccountPanel extends JPanel{
         registerInfoPanel.add(submitButton);
    
     }
-
-    void submitInformations(String holder,String address){
+    //this method will submite the information to create an Account
+    private void submitInformations(String holder,String address){
         boolean holderTextFieldBlank = !(accountHolderTextArea.getText().isBlank());
         boolean addressTextFieldBlank = !(accountHolderAddressTextArea.getText().isBlank());
 
